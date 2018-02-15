@@ -1,0 +1,11 @@
+fieldset {
+  text-align: left;
+}
+label {
+  display: block;
+  text-align: left;
+}
+select {
+  display: block;
+  width: 100%;
+}

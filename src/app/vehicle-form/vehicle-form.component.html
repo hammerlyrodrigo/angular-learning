@@ -1,0 +1,23 @@
+<form>
+  <fieldset>
+    <legend>Vehicle</legend>
+
+    <label for="type">Type</label>
+    <select id="type" name="type">
+      <option>Select an Option</option>
+      <option *ngFor="let vehicle of vehicles | async">
+        {{vehicle.type}}
+      </option>
+    </select>
+
+    <label for="brand">Brand</label>
+    <select id="brand" name="brand">
+      <option>Select an Option</option>
+    </select>
+
+    <label for="color">Color</label>
+    <select id="color">
+      <option>Select an Option</option>
+    </select>
+  </fieldset>
+</form>
