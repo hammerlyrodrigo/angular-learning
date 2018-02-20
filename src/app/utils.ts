@@ -16,4 +16,8 @@ export class ArrayUtils {
   static flatten(array: any[]): any[] {
     return [].concat.apply([], array);
   }
+
+  static deepCopy(array: any[]): any[] {
+    return array.map( element => Object.assign({}, element));
+  }
 }

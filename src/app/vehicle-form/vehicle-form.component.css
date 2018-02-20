@@ -1,11 +1,8 @@
 fieldset {
   text-align: left;
 }
-label {
-  display: block;
-  text-align: left;
-}
-select {
+
+app-dropdown {
   display: block;
   width: 100%;
 }

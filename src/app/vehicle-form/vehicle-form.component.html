@@ -1,47 +1,7 @@
 <form>
   <fieldset>
-    <legend>Vehicle</legend>
-    <!-- TYPE SELECT WIDGET -->
-    <label for="type">Type</label>
-    <select id="type"
-            name="type"
-            (change)="onSelectOptionChange('type', $event.target.value)">
-      <option value="">
-        --Select an Option--
-      </option>
-      <option *ngFor="let type of types$ | async"
-              value="{{type}}">
-        {{type}}
-      </option>
-    </select>
-    <!-- END TYPE SELECT WIDGET -->
-
-    <!-- BRAND SELECT WIDGET -->
-    <label for="brand">Brand</label>
-    <select id="brand"
-            name="brand"
-            [ngModel]="brands$ || ''">
-      <option [value]="">
-        --Select an Option--
-      </option>
-      <option *ngFor="let brand of brands$ | async"
-              [value]="brand">
-        {{brand}}
-      </option>
-    </select>
-    <!-- END BRAND SELECT WIDGET -->
-
-    <!-- COLOR SELECT WIDGET -->
-    <label for="color">Color</label>
-    <select id="color"
-            name="color"
-            [ngModel]="colors$ || ''">
-      <option [value]="">--Select an Option--</option>
-      <option *ngFor="let color of colors$ | async"
-              [value]="color">
-        {{color}}
-      </option>
-    </select>
-    <!-- END COLOR SELECT WIDGET -->
+    <app-dropdown label="Type" [items]="types$"></app-dropdown>
+    <app-dropdown label="Brand" [items]="brands$"></app-dropdown>
+    <app-dropdown label="Color" [items]="colors$"></app-dropdown>
   </fieldset>
 </form>

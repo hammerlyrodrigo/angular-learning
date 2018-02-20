@@ -11,23 +11,20 @@ export class VehicleService {
   public types: Observable<string[]>;
   public colors: Observable<string[]>;
 
-  private vehicles$: BehaviorSubject<Vehicle[]>;
   private brands$: BehaviorSubject<string[]>;
   private type$: BehaviorSubject<string[]>;
   private colors$: BehaviorSubject<string[]>;
 
   private dataStore: {
     vehicles: Vehicle[],
+    filtered: Vehicle[],
     brands: string[],
     types: string[],
     colors: string[]
   };
 
   constructor() {
-    this.dataStore = {vehicles: [], brands: [], types: [], colors: []};
-
-    this.vehicles$ = <BehaviorSubject<Vehicle[]>>new BehaviorSubject([]);
-    this.vehicles = this.vehicles$.asObservable();
+    this.dataStore = {vehicles: [], filtered: [], brands: [], types: [], colors: []};
 
     this.brands$ = <BehaviorSubject<string[]>>new BehaviorSubject([]);
     this.brands = this.brands$.asObservable();
@@ -41,8 +38,8 @@ export class VehicleService {
 
   public load() {
     dataService.fetchData().then((response: any) => {
-      this.dataStore.vehicles = response;
-      this.vehicles$.next(Object.assign({}, this.dataStore).vehicles);
+      this.dataStore.vehicles = ArrayUtils.deepCopy(response);
+      this.dataStore.filtered = ArrayUtils.deepCopy(response);
 
       this.loadStores(response);
 
@@ -52,15 +49,16 @@ export class VehicleService {
   }
 
   public filter(filterProperty: string, filterValue: string) {
-    const vehicles = this.dataStore.vehicles.filter((v) => v[filterProperty] === filterValue);
-    this.loadStore('brand', 'brands', vehicles);
-    this.loadStore('colors', 'colors', vehicles, true);
+    this.dataStore.filtered = this.dataStore.filtered.filter((v) => v[filterProperty] === filterValue);
+    this.loadStore('brand', 'brands', this.dataStore.filtered);
+    this.loadStore('colors', 'colors', this.dataStore.filtered, true);
 
     this.brands$.next(this.dataStore.brands);
     this.colors$.next(this.dataStore.colors);
   }
 
   public clearFilters() {
+    this.dataStore.filtered = ArrayUtils.deepCopy(this.dataStore.vehicles);
     this.loadStores(this.dataStore.vehicles);
   }
 

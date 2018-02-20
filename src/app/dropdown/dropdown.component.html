@@ -1,0 +1,10 @@
+<label>{{label}}</label>
+<select  [(ngModel)]="selectedItem" (ngModelChange)="selectionChanged()">
+  <option value="">
+    --Select an Option--
+  </option>
+  <option *ngFor="let item of items | async"
+          value="{{item}}">
+    {{item}}
+  </option>
+</select>
