@@ -6,7 +6,7 @@ import {Observable} from 'rxjs/Observable';
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.css']
 })
-export class DropdownComponent implements OnInit {
+export class DropdownComponent {
 
   @Input()
   label: string;
@@ -15,18 +15,16 @@ export class DropdownComponent implements OnInit {
   items:  Observable<string[]>;
 
   @Output()
-  valueChange: EventEmitter<any>;
+  change: EventEmitter<any>;
 
-  selectedItem: any = '';
+  value: any = '';
 
   constructor(private elementRef: ElementRef) {
-    this.valueChange = new EventEmitter();
-  }
-
-  ngOnInit() {
+    this.change = new EventEmitter();
   }
 
   selectionChanged() {
-    this.valueChange.emit(this.selectedItem);
+    debugger;
+    this.change.emit(this.value);
   }
 }

@@ -1,7 +1,7 @@
 <form>
   <fieldset>
-    <app-dropdown label="Type" [items]="types$"></app-dropdown>
-    <app-dropdown label="Brand" [items]="brands$"></app-dropdown>
-    <app-dropdown label="Color" [items]="colors$"></app-dropdown>
+    <app-dropdown label="Type" [items]="types$" (change)="onDrowpdownChange('type')"></app-dropdown>
+    <app-dropdown label="Brand" [items]="brands$" (change)="onDrowpdownChange('brand')"></app-dropdown>
+    <app-dropdown label="Color" [items]="colors$" (change)="onDrowpdownChange('color')"></app-dropdown>
   </fieldset>
 </form>

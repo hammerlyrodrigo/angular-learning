@@ -27,8 +27,8 @@ export class VehicleFormComponent implements OnInit {
     this.vehicleService.load();
   }
 
-  onSelectOptionChange(select: string, value: string) {
-
+  onDrowpdownChange(select: string, value: string) {
+debugger;
     if ('' === value) {
       this.vehicleService.clearFilters();
     } else {
