@@ -9,6 +9,16 @@ export class ArrayUtils {
     return array.filter((v, i, a) => v && a.indexOf(v) === i);
   }
 
+  static filter(array: any[], propertyName: string, propertyValue: string): any[] {
+    return array.filter(function(v) {
+      if (Array.isArray(v[propertyName])) {
+        return v[propertyName].indexOf(propertyValue) !== -1;
+      } else {
+        return v[propertyName] === propertyValue;
+      }
+    });
+  }
+
   static mapProperty( property: string, array: any[]): string[] {
     return array.map(obj => obj[property]);
   }

@@ -1,7 +1,7 @@
 <form>
   <fieldset>
-    <app-dropdown label="Type" [items]="types$" (change)="onDrowpdownChange('type')"></app-dropdown>
-    <app-dropdown label="Brand" [items]="brands$" (change)="onDrowpdownChange('brand')"></app-dropdown>
-    <app-dropdown label="Color" [items]="colors$" (change)="onDrowpdownChange('color')"></app-dropdown>
+    <app-dropdown label="Type" [items]="types$" (itemChange)="onDrowpdownChange('type', $event)"></app-dropdown>
+    <app-dropdown label="Brand" [items]="brands$" (itemChange)="onDrowpdownChange('brand', $event)"></app-dropdown>
+    <app-dropdown label="Color" [items]="colors$" (itemChange)="onDrowpdownChange('colors', $event)"></app-dropdown>
   </fieldset>
 </form>

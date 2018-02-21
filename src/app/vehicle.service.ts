@@ -49,7 +49,9 @@ export class VehicleService {
   }
 
   public filter(filterProperty: string, filterValue: string) {
-    this.dataStore.filtered = this.dataStore.filtered.filter((v) => v[filterProperty] === filterValue);
+    this.dataStore.filtered = ArrayUtils.filter(this.dataStore.vehicles, filterProperty, filterValue);
+
+    this.loadStore('type', 'types', this.dataStore.filtered);
     this.loadStore('brand', 'brands', this.dataStore.filtered);
     this.loadStore('colors', 'colors', this.dataStore.filtered, true);
 

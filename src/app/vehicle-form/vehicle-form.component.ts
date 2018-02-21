@@ -28,7 +28,6 @@ export class VehicleFormComponent implements OnInit {
   }
 
   onDrowpdownChange(select: string, value: string) {
-debugger;
     if ('' === value) {
       this.vehicleService.clearFilters();
     } else {

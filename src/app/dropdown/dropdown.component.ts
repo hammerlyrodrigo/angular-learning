@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, Output} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
 @Component({
@@ -15,16 +15,15 @@ export class DropdownComponent {
   items:  Observable<string[]>;
 
   @Output()
-  change: EventEmitter<any>;
+  itemChange: EventEmitter<any>;
 
   value: any = '';
 
   constructor(private elementRef: ElementRef) {
-    this.change = new EventEmitter();
+    this.itemChange = new EventEmitter();
   }
 
-  selectionChanged() {
-    debugger;
-    this.change.emit(this.value);
+  onChange(e: any) {
+    this.itemChange.emit(this.value);
   }
 }
