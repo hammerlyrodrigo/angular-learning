@@ -19,18 +19,23 @@ export class DropdownComponent implements OnInit {
   @Output()
   itemChange: EventEmitter<any>;
 
+  @Output()
+  listClear: EventEmitter<any>;
+
   value: any = '';
 
   ngOnInit () {
     this.items.subscribe ( data => {
       if (data.indexOf(this.value) === -1) {
         this.value = '';
+        this.listClear.emit();
       }
     });
   }
 
   constructor(private elementRef: ElementRef) {
-    this.itemChange = new EventEmitter();
+    this.itemChange = new EventEmitter()
+    this.listClear = new EventEmitter();
   }
 
   onChange(e: any) {

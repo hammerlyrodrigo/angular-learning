@@ -44,4 +44,8 @@ export class VehicleFormComponent implements OnInit {
       this.vehicleService.filter(select, value);
     }
   }
+
+  onDropdownClear(select: string) {
+    this.selection[select] = '';
+  }
 }

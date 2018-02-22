@@ -1,8 +1,21 @@
 <form>
   <fieldset>
-    <app-dropdown label="Type" [items]="types$" (itemChange)="onDrowpdownChange('type', $event)"></app-dropdown>
-    <app-dropdown label="Brand" [items]="brands$" (itemChange)="onDrowpdownChange('brand', $event)"></app-dropdown>
-    <app-dropdown label="Color" [items]="colors$" (itemChange)="onDrowpdownChange('colors', $event)"></app-dropdown>
+    <!-- TYPE DROPDOWN -->
+    <app-dropdown label="Type" [items]="types$"
+                  (itemChange)="onDrowpdownChange('type', $event)"
+                  (listClear)="onDropdownClear('type')"></app-dropdown>
+
+    <!-- BRAND DROPDOWN -->
+    <app-dropdown label="Brand" [items]="brands$"
+                  (itemChange)="onDrowpdownChange('brand', $event)"
+                  (listClear)="onDropdownClear('brand')"></app-dropdown>
+
+    <!-- COLOR DROPDOWN -->
+    <app-dropdown label="Color" [items]="colors$"
+                  (itemChange)="onDrowpdownChange('colors', $event)"
+                  (listClear)="onDropdownClear('colors')"></app-dropdown>
+
+    <!-- RESULTS DISPLAY -->
     <p>{{selection.type}}, {{selection.brand}}, {{selection.colors}}</p>
   </fieldset>
 </form>
