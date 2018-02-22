@@ -15,6 +15,11 @@ export class VehicleFormComponent implements OnInit {
   public types$: Observable<string[]>;
   public brands$: Observable<string[]>;
   public colors$: Observable<string[]>;
+  public selection: {
+    type: string,
+    brand: string,
+    colors: string
+  };
 
   constructor(private vehicleService: VehicleService) {}
 
@@ -23,11 +28,16 @@ export class VehicleFormComponent implements OnInit {
     this.types$ = this.vehicleService.types;
     this.brands$ = this.vehicleService.brands;
     this.colors$ = this.vehicleService.colors;
-
+    this.selection = {
+      type: '',
+      brand: '',
+      colors: ''
+    };
     this.vehicleService.load();
   }
 
   onDrowpdownChange(select: string, value: string) {
+    this.selection[select] = value;
     if ('' === value) {
       this.vehicleService.clearFilters();
     } else {

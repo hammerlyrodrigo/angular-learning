@@ -3,5 +3,6 @@
     <app-dropdown label="Type" [items]="types$" (itemChange)="onDrowpdownChange('type', $event)"></app-dropdown>
     <app-dropdown label="Brand" [items]="brands$" (itemChange)="onDrowpdownChange('brand', $event)"></app-dropdown>
     <app-dropdown label="Color" [items]="colors$" (itemChange)="onDrowpdownChange('colors', $event)"></app-dropdown>
+    <p>{{selection.type}}, {{selection.brand}}, {{selection.colors}}</p>
   </fieldset>
 </form>
