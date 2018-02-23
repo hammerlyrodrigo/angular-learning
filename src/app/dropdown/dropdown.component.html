@@ -3,7 +3,7 @@
   <option value="">
     --Select an Option--
   </option>
-  <option *ngFor="let item of items | async" [ngValue]="item">
+  <option *ngFor="let item of items" [ngValue]="item">
     {{item}}
   </option>
 </select>

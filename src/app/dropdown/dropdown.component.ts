@@ -1,7 +1,5 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'app-dropdown',
@@ -25,21 +23,15 @@ export class DropdownComponent implements OnInit {
   value: any = '';
 
   ngOnInit () {
-    this.items.subscribe ( data => {
-      if (data.indexOf(this.value) === -1) {
-        this.value = '';
-        this.listClear.emit();
-      }
-    });
+
   }
 
   constructor(private elementRef: ElementRef) {
-    this.itemChange = new EventEmitter()
+    this.itemChange = new EventEmitter();
     this.listClear = new EventEmitter();
   }
 
   onChange(e: any) {
-    debugger;
     this.itemChange.emit(this.value);
   }
 }
