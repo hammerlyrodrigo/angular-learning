@@ -70,7 +70,7 @@ var dataService;
       type: 'car',
       brand: 'Ferrari F40',
       colors: ['red', 'yellow'],
-      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/F40ferarri20090509.jpg/560px-F40ferarri20090509.jpg'
+      img: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Salon_Priv%C3%A9_London_2012_%287957453452%29.jpg'
     },
     {
       id: 11,

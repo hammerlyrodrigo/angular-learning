@@ -6,3 +6,12 @@ app-dropdown {
   display: block;
   width: 100%;
 }
+
+.vehicle-view {
+  width: 100%;
+}
+
+.vehicle-view img {
+  width: 33%;
+  display: inline-block;
+}

@@ -1,10 +1,16 @@
 <form>
   <fieldset>
     <app-dropdown label="Type"
-                  [items]="((vehicles | async | propertyPipe : 'type') | uniquePipe | sortAscPipe)"></app-dropdown>
+                  [items]="((vehicles | async | propertyPipe : 'type') | uniquePipe | sortAscPipe)"
+                  (itemChange)="onDrowpdownItemChange('type', $event)"></app-dropdown>
     <app-dropdown label="Brand"
-                  [items]="((vehicles | async | propertyPipe : 'brand') | uniquePipe | sortAscPipe)"></app-dropdown>
+                  [items]="((vehicles | async | propertyPipe : 'brand') | uniquePipe | sortAscPipe)"
+                  (itemChange)="onDrowpdownItemChange('brand', $event)"></app-dropdown>
     <app-dropdown label="Color"
-                  [items]="(((vehicles | async | propertyPipe : 'colors') | flattenPipe)| uniquePipe | sortAscPipe)"></app-dropdown>
+                  [items]="(((vehicles | async | propertyPipe : 'colors') | flattenPipe)| uniquePipe | sortAscPipe)"
+                  (itemChange)="onDrowpdownItemChange('colors', $event)"></app-dropdown>
   </fieldset>
 </form>
+<div class="vehicle-view">
+  <img *ngFor="let vehicle of vehicles | async" src="{{vehicle.img}}">
+</div>

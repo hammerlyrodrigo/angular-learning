@@ -1,4 +1,7 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+  Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output,
+  SimpleChanges
+} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
 @Component({
@@ -6,7 +9,7 @@ import {Observable} from 'rxjs/Observable';
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.css']
 })
-export class DropdownComponent implements OnInit {
+export class DropdownComponent implements OnInit, OnChanges {
 
   @Input()
   label: string;
@@ -26,12 +29,21 @@ export class DropdownComponent implements OnInit {
 
   }
 
-  constructor(private elementRef: ElementRef) {
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['items'].previousValue !== undefined &&
+        changes['items'].currentValue.indexOf(this.value) === -1 &&
+        '' !== this.value) {
+      this.listClear.emit();
+      this.value = '';
+    }
+  }
+
+  constructor() {
     this.itemChange = new EventEmitter();
     this.listClear = new EventEmitter();
   }
 
-  onChange(e: any) {
+  onChange() {
     this.itemChange.emit(this.value);
   }
 }
